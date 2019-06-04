@@ -34,16 +34,17 @@ public class Demo4 {
     @Test
     public void test1(){
 
-        Consumer<String> consumer = (x) -> System.out.println(x);  //普通用法
-
         PrintStream printStream = System.out;
 
         // Lambda 体中调用方法的参数列表与返回值类型，要与函数式接口中抽象方法的函数列表和返回值类型保持一致！
         // Consumer 中的抽象方法，参数为 T，返回值为 void；System.out.println(x)中，参数为 x，返回值为 void
-        Consumer<String> consumer1 = printStream::println;  // 对象::实例方法名
 
-        Consumer<String> consumer2 = System.out::println;   // hello
-        consumer2.accept("hello");
+        Consumer<String> consumer1 = (x) -> System.out.println(x);  //Lambda 表达式普通用法
+        Consumer<String> consumer2 = (x) -> printStream.println(x);  //Lambda 表达式普通用法
+
+        Consumer<String> consumer3 = printStream::println;  // 对象::实例方法名
+        Consumer<String> consumer4 = System.out::println;   // hello
+        consumer4.accept("hello");
 
     }
 
@@ -59,6 +60,7 @@ public class Demo4 {
         System.out.println(name);    // 张三
 
         //Lambda 体中调用方法的参数列表与返回值类型，要与函数式接口中抽象方法的函数列表和返回值类型保持一致！
+        //无参数，一个返回值
         Supplier<String> supplier1 = student::getName;
         String name1 = supplier1.get();
         System.out.println(name1);    // 张三
@@ -66,7 +68,7 @@ public class Demo4 {
     }
 
 
-    // 类::实例方法名
+    // 类::静态方法名
     @Test
     public void test3(){
 
@@ -78,7 +80,7 @@ public class Demo4 {
     }
 
 
-    // 类::静态方法名
+    // 类::实例方法名
     @Test
     public void test4(){
 
@@ -115,8 +117,6 @@ public class Demo4 {
         Supplier<Student> studentSupplier1 = Student::new;   //调用无参构造器
         Student student = studentSupplier1.get();
         System.out.println(student);    // Student{name='null', age=null, sex='null'}
-
-
 
         Function<String,Student> function = (x) -> new Student(x);
 

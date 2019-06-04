@@ -67,8 +67,8 @@ public class Demo2 {
         Long value = this.get(100L,200L, (x,y) -> x * y );
         System.out.println(value);  // 20000
 
-        String he = this.get("abcde","ddd", (x,y) -> x.toUpperCase());
-        System.out.println(he);    // ABCDE
+        String he = this.get("hello","ddd", (x,y) -> x.toUpperCase());
+        System.out.println(he);    // HELLO
 
     }
 

@@ -14,22 +14,22 @@ import java.util.function.Supplier;
 /**
  * Java8 内置的四大核心函数式接口
  *
- * Consumer<T> ：消费型接口
+ * Consumer<T> ：消费型接口（一个参数，无返回值）
  * void accept(T t);
  *
- * Supplier<T> ：供给型接口
+ * Supplier<T> ：供给型接口（无参数，一个返回值）
  * T get();
  *
- * Function<T,R> ：函数型接口
+ * Function<T,R> ：函数型接口（一个参数，一个返回值）
  * R apply(T t);
  *
- * Predicate<T> ：断言型接口
+ * Predicate<T> ：断言型接口（一个参数，boolean 返回值）
  * boolean test(T t);
  */
 public class Demo3 {
 
 
-    // Consumer<T>  消费型接口
+    // Consumer<T>  消费型接口（一个参数，无返回值）
     @Test
     public void test1(){
         happy(1000, (x) -> System.out.println("每次出去玩，花费"+ x + "元") );    // 每次出去玩，花费1000.0元
@@ -42,7 +42,7 @@ public class Demo3 {
 
 
 
-    // Supplier<T>  消费型接口
+    // Supplier<T>  消费型接口（无参数，一个返回值）
     @Test
     public void test2(){
         List<Integer> list = getNumberList(10, () -> (int)(Math.random() * 100));
@@ -60,11 +60,11 @@ public class Demo3 {
     }
 
 
-    // Function<T, R>  函数型接口
+    // Function<T, R>  函数型接口（一个参数，一个返回值）
     @Test
     public void test3(){
-        String string = stringHandler("abcde", (x) -> x.toUpperCase() );
-        System.out.println(string);    // ABCDE
+        String string = stringHandler("hello", (x) -> x.toUpperCase() );
+        System.out.println(string);    // HELLO
     }
 
     //字符串处理
@@ -74,7 +74,7 @@ public class Demo3 {
 
 
 
-    // Function<T, R>  断言型接口
+    // Predicate<T>  断言型接口
     @Test
     public void test4(){
         List<String> stringList = Arrays.asList("hello","ko","china");
